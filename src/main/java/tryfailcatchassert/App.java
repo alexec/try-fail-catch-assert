@@ -15,7 +15,10 @@ public class App {
     }
 
     public void shutdown() {
-        // some code
+        if (name.isEmpty()) {
+            throw new IllegalStateException("name is null");
+        }
+        // some more code
     }
 
     public void setName(String name) {

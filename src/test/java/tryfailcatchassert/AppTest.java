@@ -3,6 +3,8 @@ package tryfailcatchassert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.fail;
+
 public class AppTest {
 
     private App app;
@@ -12,9 +14,15 @@ public class AppTest {
         app = new App();
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void shutdownWithOutStartThrowException() throws Exception {
+        app.setName("");
         app.configure();
-        app.shutdown();
+        try {
+            app.shutdown();
+            fail();
+        } catch (IllegalStateException e) {
+            // expected
+        }
     }
 }
