@@ -16,7 +16,7 @@ public class App {
 
     public void shutdown() {
         if (name.isEmpty()) {
-            throw new IllegalStateException("name is null");
+            throw new IllegalStateException("name is empty");
         }
         // some more code
     }

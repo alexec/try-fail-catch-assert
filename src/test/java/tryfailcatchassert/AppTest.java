@@ -3,6 +3,7 @@ package tryfailcatchassert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class AppTest {
@@ -15,14 +16,14 @@ public class AppTest {
     }
 
     @Test
-    public void shutdownWithOutStartThrowException() throws Exception {
+    public void shutdownWithOutStartThrowsIllegalStateException() throws Exception {
         app.setName("");
         app.configure();
         try {
             app.shutdown();
             fail();
         } catch (IllegalStateException e) {
-            // expected
+            assertEquals("state is not STARTED", e.getMessage());
         }
     }
 }
